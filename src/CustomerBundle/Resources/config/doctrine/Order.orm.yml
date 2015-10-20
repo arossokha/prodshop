@@ -1,0 +1,23 @@
+CustomerBundle\Entity\Order:
+    type: entity
+    table: order
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        sum:
+            type: decimal
+        date:
+            type: datetime
+    manyToOne:
+        customer:
+            targetEntity: Customer
+            inversedBy: orders
+            joinColumn:
+                name: customer_id
+                referencedColumnName: id
+    manyToMany:
+        products:
+            targetEntity: ProductBundle\Entity\Product
+            mappedBy: orders

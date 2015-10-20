@@ -1,0 +1,30 @@
+ProductBundle\Entity\Product:
+    type: entity
+    table: product
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        price:
+            type: decimal
+            precision: 10
+            scale: 2
+        quantity:
+            type: integer
+            length: 11
+    manyToMany:
+        orders:
+            targetEntity: CustomerBundle\Entity\Order
+            joinTable:
+                name: order_product
+                joinColumns:
+                    product_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    order_id:
+                        referencedColumnName: id

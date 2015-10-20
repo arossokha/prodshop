@@ -1,3 +1,0 @@
-shop_product_product:
-    resource: "@ShopProductBundle/Resources/config/routing/product.yml"
-    prefix:   /product
