@@ -1,0 +1,3 @@
+shop_customer_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ShopCustomerBundle:Default:index }

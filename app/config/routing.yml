@@ -1,3 +1,7 @@
+shop_customer:
+    resource: "@ShopCustomerBundle/Resources/config/routing.yml"
+    prefix:   /
+
 shop_product:
     resource: "@ShopProductBundle/Resources/config/routing.yml"
     prefix:   /
