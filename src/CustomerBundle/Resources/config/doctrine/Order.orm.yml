@@ -19,6 +19,6 @@ CustomerBundle\Entity\Order:
                 name: customer_id
                 referencedColumnName: id
     oneToMany:
-        products:
-            targetEntity: ProductBundle\Entity\Product
-            mappedBy: OrderProduct
+        orderProducts:
+            targetEntity: OrderProduct
+            mappedBy: order

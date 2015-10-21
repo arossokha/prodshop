@@ -1,3 +1,7 @@
+customer_orderproduct:
+    resource: "@CustomerBundle/Resources/config/routing/orderproduct.yml"
+    prefix:   /orderproduct
+
 customer_customer:
     resource: "@CustomerBundle/Resources/config/routing/customer.yml"
     prefix:   /customer

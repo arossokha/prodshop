@@ -5,22 +5,17 @@ jQuery(document).ready(function () {
         var index = $productsList.data('index');
         $productsList = $productsList.data('index', index + 1);
 
-        var formTemplate = "<div><label class=\"required\">Name</label><div id=\"customerbundle_order_products_" +
+        var formTemplate = "<div><label class=\"required\">Name</label><div id=\"customerbundle_order_orderProducts_" +
             index +
-            "_\"><div><label for=\"customerbundle_order_products_" +
+            "_\"><div><label for=\"customerbundle_order_orderProducts_" +
             index +
-            "_name\">Name: </label>"+e.params.data.name+" ("+e.params.data.price+")"+" <input type=\"hidden\" id=\"customerbundle_order_products[" +
+            "_name\">Name: </label>"+e.params.data.name+" ("+e.params.data.price+")"+" <input type=\"hidden\" id=\"customerbundle_order_orderProducts_" +
             index +
-            "_id\" name=\"customerbundle_order[products][" +
+            "_product_id\" name=\"customerbundle_order[orderProducts][" +
             index +
-            "][id]\" required=\"required\" value=\""+e.params.data.id+"\"/>"+
-            "<input type=\"hidden\" id=\"customerbundle_order_products[" +
-            index +
-            "]price\" name=\"customerbundle_order[products][" +
-            index +
-            "][price]\" required=\"required\" value=\""+e.params.data.price+"\"/></div><div>" +
-            "<div><label for=\"customerbundle_order_products_" + index + "_quantity\" class=\"required\">Quantity: </label>" +
-            "<input type=\"number\" class='calculateSum' id=\"customerbundle_order_products_" + index + "_quantity\" name=\"customerbundle_order[products][" +
+            "][product_id]\" required=\"required\" value=\""+e.params.data.id+"\"/>"+"</div>" +
+            "<div><label for=\"customerbundle_order_orderProducts_" + index + "_quantity\" class=\"required\">Quantity: </label>" +
+            "<input type=\"number\" class='calculateSum' id=\"customerbundle_order_orderProducts_" + index + "_quantity\" name=\"customerbundle_order[orderProducts][" +
             index +
             "][quantity]\" required=\"required\" maxlength=\"2\" value=\"1\" data-price='"+e.params.data.price+"'/></div></div></div>"
 

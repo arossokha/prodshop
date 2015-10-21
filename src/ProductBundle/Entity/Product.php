@@ -155,4 +155,82 @@ class Product
     {
         return $this->orders;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $orderProducts;
+
+
+    /**
+     * Add orderProduct
+     *
+     * @param \ProductBundle\Entity\OrderProduct $orderProduct
+     *
+     * @return Product
+     */
+    public function addOrderProduct(\ProductBundle\Entity\OrderProduct $orderProduct)
+    {
+        $this->orderProducts[] = $orderProduct;
+
+        return $this;
+    }
+
+    /**
+     * Remove orderProduct
+     *
+     * @param \ProductBundle\Entity\OrderProduct $orderProduct
+     */
+    public function removeOrderProduct(\ProductBundle\Entity\OrderProduct $orderProduct)
+    {
+        $this->orderProducts->removeElement($orderProduct);
+    }
+
+    /**
+     * Get orderProducts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrderProducts()
+    {
+        return $this->orderProducts;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $productOrders;
+
+
+    /**
+     * Add productOrder
+     *
+     * @param \ProductBundle\Entity\OrderProduct $productOrder
+     *
+     * @return Product
+     */
+    public function addProductOrder(\ProductBundle\Entity\OrderProduct $productOrder)
+    {
+        $this->productOrders[] = $productOrder;
+
+        return $this;
+    }
+
+    /**
+     * Remove productOrder
+     *
+     * @param \ProductBundle\Entity\OrderProduct $productOrder
+     */
+    public function removeProductOrder(\ProductBundle\Entity\OrderProduct $productOrder)
+    {
+        $this->productOrders->removeElement($productOrder);
+    }
+
+    /**
+     * Get productOrders
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProductOrders()
+    {
+        return $this->productOrders;
+    }
 }

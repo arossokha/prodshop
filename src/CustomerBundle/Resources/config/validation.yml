@@ -1,0 +1,13 @@
+CustomerBundle\Entity\Customer:
+        properties:
+                firstname:
+                        - NotBlank: ~
+                login:
+                        - NotBlank: ~
+CustomerBundle\Entity\Order:
+        properties:
+                date:
+                        - NotBlank: ~
+#                        - DateTime: ~
+                sum:
+                        - NotBlank: ~

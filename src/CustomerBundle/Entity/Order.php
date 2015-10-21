@@ -23,21 +23,21 @@ class Order
     private $date;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $orderProducts;
+
+    /**
      * @var \CustomerBundle\Entity\Customer
      */
     private $customer;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $products;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->orderProducts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -99,6 +99,40 @@ class Order
     }
 
     /**
+     * Add orderProduct
+     *
+     * @param \CustomerBundle\Entity\OrderProduct $orderProduct
+     *
+     * @return Order
+     */
+    public function addOrderProduct(\CustomerBundle\Entity\OrderProduct $orderProduct)
+    {
+        $this->orderProducts[] = $orderProduct;
+
+        return $this;
+    }
+
+    /**
+     * Remove orderProduct
+     *
+     * @param \CustomerBundle\Entity\OrderProduct $orderProduct
+     */
+    public function removeOrderProduct(\CustomerBundle\Entity\OrderProduct $orderProduct)
+    {
+        $this->orderProducts->removeElement($orderProduct);
+    }
+
+    /**
+     * Get orderProducts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOrderProducts()
+    {
+        return $this->orderProducts;
+    }
+
+    /**
      * Set customer
      *
      * @param \CustomerBundle\Entity\Customer $customer
@@ -121,38 +155,5 @@ class Order
     {
         return $this->customer;
     }
-
-    /**
-     * Add product
-     *
-     * @param \ProductBundle\Entity\Product $product
-     *
-     * @return Order
-     */
-    public function addProduct(\ProductBundle\Entity\Product $product)
-    {
-        $this->products[] = $product;
-
-        return $this;
-    }
-
-    /**
-     * Remove product
-     *
-     * @param \ProductBundle\Entity\Product $product
-     */
-    public function removeProduct(\ProductBundle\Entity\Product $product)
-    {
-        $this->products->removeElement($product);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
 }
+

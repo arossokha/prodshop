@@ -1,0 +1,30 @@
+orderproduct:
+    path:     /
+    defaults: { _controller: "CustomerBundle:OrderProduct:index" }
+
+orderproduct_show:
+    path:     /{id}/show
+    defaults: { _controller: "CustomerBundle:OrderProduct:show" }
+
+orderproduct_new:
+    path:     /new
+    defaults: { _controller: "CustomerBundle:OrderProduct:new" }
+
+orderproduct_create:
+    path:     /create
+    defaults: { _controller: "CustomerBundle:OrderProduct:create" }
+    methods:  POST
+
+orderproduct_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CustomerBundle:OrderProduct:edit" }
+
+orderproduct_update:
+    path:     /{id}/update
+    defaults: { _controller: "CustomerBundle:OrderProduct:update" }
+    methods:  [POST, PUT]
+
+orderproduct_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CustomerBundle:OrderProduct:delete" }
+    methods:  [POST, DELETE]

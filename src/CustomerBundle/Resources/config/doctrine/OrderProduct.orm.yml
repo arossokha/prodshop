@@ -10,17 +10,19 @@ CustomerBundle\Entity\OrderProduct:
             type: integer
         product_id:
             type: integer
+        quantity:
+            type: integer
     manyToOne:
         order:
             targetEntity: Order
-            inversedBy: orders
+            inversedBy: orderProducts
             joinColumn:
                 name: order_id
                 referencedColumnName: id
-    manyToOne:
         product:
-            targetEntity: ProductBundle\Product
-            inversedBy: orders
+            targetEntity: ProductBundle\Entity\Product
+            inversedBy: productOrders
             joinColumn:
-                name: order_id
+                name: product_id
                 referencedColumnName: id
+

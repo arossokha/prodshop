@@ -19,17 +19,14 @@ ProductBundle\Entity\Product:
             type: integer
             length: 11
     oneToMany:
-            jobs:
-                targetEntity: Job
-                mappedBy: CustomerBundle\Entity\OrderProduct
-#    manyToMany:
-#        orders:
-#            targetEntity: CustomerBundle\Entity\Order
-#            joinTable:
-#                name: order_product
-#                joinColumns:
-#                    product_id:
-#                        referencedColumnName: id
-#                inverseJoinColumns:
-#                    order_id:
-#                        referencedColumnName: id
+            productOrders:
+                targetEntity: CustomerBundle\Entity\OrderProduct
+                mappedBy: product
+
+#    manyToOne:
+#            orders:
+#              targetEntity: CustomerBundle\Entity\OrderProduct
+#              inversedBy: products
+#              joinColumn:
+#                name: product_id
+#                referencedColumnName: id
