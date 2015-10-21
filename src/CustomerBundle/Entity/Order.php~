@@ -1,6 +1,6 @@
 <?php
 
-namespace Shop\CustomerBundle\Entity;
+namespace CustomerBundle\Entity;
 
 /**
  * Order
@@ -23,7 +23,7 @@ class Order
     private $date;
 
     /**
-     * @var \Shop\CustomerBundle\Entity\Customer
+     * @var \CustomerBundle\Entity\Customer
      */
     private $customer;
 
@@ -101,11 +101,11 @@ class Order
     /**
      * Set customer
      *
-     * @param \Shop\CustomerBundle\Entity\Customer $customer
+     * @param \CustomerBundle\Entity\Customer $customer
      *
      * @return Order
      */
-    public function setCustomer(\Shop\CustomerBundle\Entity\Customer $customer = null)
+    public function setCustomer(\CustomerBundle\Entity\Customer $customer = null)
     {
         $this->customer = $customer;
 
@@ -115,7 +115,7 @@ class Order
     /**
      * Get customer
      *
-     * @return \Shop\CustomerBundle\Entity\Customer
+     * @return \CustomerBundle\Entity\Customer
      */
     public function getCustomer()
     {
@@ -125,11 +125,11 @@ class Order
     /**
      * Add product
      *
-     * @param \Shop\CustomerBundle\Entity\Product $product
+     * @param \ProductBundle\Entity\Product $product
      *
      * @return Order
      */
-    public function addProduct(\Shop\CustomerBundle\Entity\Product $product)
+    public function addProduct(\ProductBundle\Entity\Product $product)
     {
         $this->products[] = $product;
 
@@ -139,9 +139,9 @@ class Order
     /**
      * Remove product
      *
-     * @param \Shop\CustomerBundle\Entity\Product $product
+     * @param \ProductBundle\Entity\Product $product
      */
-    public function removeProduct(\Shop\CustomerBundle\Entity\Product $product)
+    public function removeProduct(\ProductBundle\Entity\Product $product)
     {
         $this->products->removeElement($product);
     }

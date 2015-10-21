@@ -1,0 +1,26 @@
+CustomerBundle\Entity\OrderProduct:
+    type: entity
+    table: order_product
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        order_id:
+            type: integer
+        product_id:
+            type: integer
+    manyToOne:
+        order:
+            targetEntity: Order
+            inversedBy: orders
+            joinColumn:
+                name: order_id
+                referencedColumnName: id
+    manyToOne:
+        product:
+            targetEntity: ProductBundle\Product
+            inversedBy: orders
+            joinColumn:
+                name: order_id
+                referencedColumnName: id

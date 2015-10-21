@@ -1,6 +1,7 @@
 CustomerBundle\Entity\Order:
     type: entity
-    table: order
+    table: orders
+    repositoryClass: CustomerBundle\Repository\OrderRepository
     id:
         id:
             type: integer
@@ -17,7 +18,7 @@ CustomerBundle\Entity\Order:
             joinColumn:
                 name: customer_id
                 referencedColumnName: id
-    manyToMany:
+    oneToMany:
         products:
             targetEntity: ProductBundle\Entity\Product
-            mappedBy: orders
+            mappedBy: OrderProduct

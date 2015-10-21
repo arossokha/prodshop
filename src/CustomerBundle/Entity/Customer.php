@@ -16,7 +16,7 @@ class Customer
     /**
      * @var string
      */
-    private $firtname;
+    private $firstname;
 
     /**
      * @var string
@@ -52,27 +52,27 @@ class Customer
     }
 
     /**
-     * Set firtname
+     * Set firstname
      *
-     * @param string $firtname
+     * @param string $firstname
      *
      * @return Customer
      */
-    public function setFirtname($firtname)
+    public function setFirstname($firstname)
     {
-        $this->firtname = $firtname;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     /**
-     * Get firtname
+     * Get firstname
      *
      * @return string
      */
-    public function getFirtname()
+    public function getFirstname()
     {
-        return $this->firtname;
+        return $this->firstname;
     }
 
     /**
@@ -166,5 +166,10 @@ class Customer
         if($this->password) {
             $this->password = md5($this->password);
         }
+    }
+
+    public function __toString()
+    {
+        return $this->getFirstname() ?: "";
     }
 }

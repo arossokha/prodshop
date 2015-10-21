@@ -10,12 +10,13 @@ class LoadCustomerData extends AbstractFixture implements OrderedFixtureInterfac
 {
     public function load(ObjectManager $em)
     {
+        $pass = md5('test123');
         for($i = 0; $i <= $this->getOrder(); $i++)
         {
             $customer = new Customer();
-            $customer->setFirtname("John Doe - ".rand(100,999).'-'.time());
+            $customer->setFirstname("John Doe - ".rand(100,999).'-'.time());
             $customer->setLogin('test'.($i+1).'@mailinator.com');
-            $customer->setPassword('test123');
+            $customer->setPassword($pass);
             $em->persist($customer);
             if($i%3 == 0) {
                 sleep(1);

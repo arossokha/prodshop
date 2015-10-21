@@ -6,7 +6,7 @@ CustomerBundle\Entity\Customer:
             type: integer
             generator: { strategy: AUTO }
     fields:
-        firtname:
+        firstname:
             type: string
             length: 100
         login:

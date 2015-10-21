@@ -1,7 +1,8 @@
 <?php
 
-namespace Shop\CustomerBundle\Entity;
+namespace CustomerBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 /**
  * Customer
  */
@@ -125,11 +126,11 @@ class Customer
     /**
      * Add order
      *
-     * @param \Shop\CustomerBundle\Entity\Order $order
+     * @param \CustomerBundle\Entity\Order $order
      *
      * @return Customer
      */
-    public function addOrder(\Shop\CustomerBundle\Entity\Order $order)
+    public function addOrder(\CustomerBundle\Entity\Order $order)
     {
         $this->orders[] = $order;
 
@@ -139,9 +140,9 @@ class Customer
     /**
      * Remove order
      *
-     * @param \Shop\CustomerBundle\Entity\Order $order
+     * @param \CustomerBundle\Entity\Order $order
      */
-    public function removeOrder(\Shop\CustomerBundle\Entity\Order $order)
+    public function removeOrder(\CustomerBundle\Entity\Order $order)
     {
         $this->orders->removeElement($order);
     }
@@ -155,4 +156,22 @@ class Customer
     {
         return $this->orders;
     }
+
+    /**
+     * @todo  create correct password saving
+     * // @ORM\PrePersist
+     */
+    public function setPasswordValue()
+    {
+        if($this->password) {
+            $this->password = md5($this->password);
+        }
+    }
+
+    public function __toString()
+    {
+        return $this->getFirstname() ?: "";
+    }
+
+
 }

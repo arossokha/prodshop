@@ -1,0 +1,35 @@
+{% extends 'CustomerBundle::layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/customer/js/order.form.js') }}"></script>
+{% endblock %}
+
+{% block body -%}
+    <h1>Order creation</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.customer) }}
+
+    {{ form_row(form.date) }}
+
+    <select name="products" id="productsList"></select>
+
+    <ul class="products" data-index="0">
+    </ul>
+
+    {{ form_row(form.sum,{'attr' : {'class' : 'orderSum'}}) }}
+
+    {{ form_end(form) }}
+
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('order') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+
+{% endblock %}

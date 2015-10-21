@@ -1,6 +1,7 @@
 ProductBundle\Entity\Product:
     type: entity
     table: product
+    repositoryClass: ProductBundle\Repository\ProductRepository
     id:
         id:
             type: integer
@@ -17,14 +18,18 @@ ProductBundle\Entity\Product:
         quantity:
             type: integer
             length: 11
-    manyToMany:
-        orders:
-            targetEntity: CustomerBundle\Entity\Order
-            joinTable:
-                name: order_product
-                joinColumns:
-                    product_id:
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    order_id:
-                        referencedColumnName: id
+    oneToMany:
+            jobs:
+                targetEntity: Job
+                mappedBy: CustomerBundle\Entity\OrderProduct
+#    manyToMany:
+#        orders:
+#            targetEntity: CustomerBundle\Entity\Order
+#            joinTable:
+#                name: order_product
+#                joinColumns:
+#                    product_id:
+#                        referencedColumnName: id
+#                inverseJoinColumns:
+#                    order_id:
+#                        referencedColumnName: id

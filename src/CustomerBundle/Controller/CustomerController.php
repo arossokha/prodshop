@@ -1,43 +1,41 @@
 <?php
 
-namespace ProductBundle\Controller;
+namespace CustomerBundle\Controller;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use ProductBundle\Entity\Product;
-use ProductBundle\Form\ProductType;
+use CustomerBundle\Entity\Customer;
+use CustomerBundle\Form\CustomerType;
 
 /**
- * Product controller.
+ * Customer controller.
  *
  */
-class ProductController extends Controller
+class CustomerController extends Controller
 {
 
     /**
-     * Lists all Product entities.
+     * Lists all Customer entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('ProductBundle:Product')->findAll();
+        $entities = $em->getRepository('CustomerBundle:Customer')->findAll();
 
-        return $this->render('ProductBundle:Product:index.html.twig', array(
+        return $this->render('CustomerBundle:Customer:index.html.twig', array(
             'entities' => $entities,
         ));
     }
     /**
-     * Creates a new Product entity.
+     * Creates a new Customer entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Product();
+        $entity = new Customer();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -46,26 +44,26 @@ class ProductController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('product_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('customer_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('ProductBundle:Product:new.html.twig', array(
+        return $this->render('CustomerBundle:Customer:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a Product entity.
+     * Creates a form to create a Customer entity.
      *
-     * @param Product $entity The entity
+     * @param Customer $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Product $entity)
+    private function createCreateForm(Customer $entity)
     {
-        $form = $this->createForm(new ProductType(), $entity, array(
-            'action' => $this->generateUrl('product_create'),
+        $form = $this->createForm(new CustomerType(), $entity, array(
+            'action' => $this->generateUrl('customer_create'),
             'method' => 'POST',
         ));
 
@@ -75,60 +73,60 @@ class ProductController extends Controller
     }
 
     /**
-     * Displays a form to create a new Product entity.
+     * Displays a form to create a new Customer entity.
      *
      */
     public function newAction()
     {
-        $entity = new Product();
+        $entity = new Customer();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('ProductBundle:Product:new.html.twig', array(
+        return $this->render('CustomerBundle:Customer:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Product entity.
+     * Finds and displays a Customer entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ProductBundle:Product')->find($id);
+        $entity = $em->getRepository('CustomerBundle:Customer')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Product entity.');
+            throw $this->createNotFoundException('Unable to find Customer entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ProductBundle:Product:show.html.twig', array(
+        return $this->render('CustomerBundle:Customer:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing Product entity.
+     * Displays a form to edit an existing Customer entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ProductBundle:Product')->find($id);
+        $entity = $em->getRepository('CustomerBundle:Customer')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Product entity.');
+            throw $this->createNotFoundException('Unable to find Customer entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('ProductBundle:Product:edit.html.twig', array(
+        return $this->render('CustomerBundle:Customer:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -136,16 +134,16 @@ class ProductController extends Controller
     }
 
     /**
-    * Creates a form to edit a Product entity.
+    * Creates a form to edit a Customer entity.
     *
-    * @param Product $entity The entity
+    * @param Customer $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Product $entity)
+    private function createEditForm(Customer $entity)
     {
-        $form = $this->createForm(new ProductType(), $entity, array(
-            'action' => $this->generateUrl('product_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new CustomerType(), $entity, array(
+            'action' => $this->generateUrl('customer_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -154,17 +152,17 @@ class ProductController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Product entity.
+     * Edits an existing Customer entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('ProductBundle:Product')->find($id);
+        $entity = $em->getRepository('CustomerBundle:Customer')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Product entity.');
+            throw $this->createNotFoundException('Unable to find Customer entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -174,17 +172,17 @@ class ProductController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('product_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('customer_edit', array('id' => $id)));
         }
 
-        return $this->render('ProductBundle:Product:edit.html.twig', array(
+        return $this->render('CustomerBundle:Customer:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Product entity.
+     * Deletes a Customer entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -194,21 +192,21 @@ class ProductController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('ProductBundle:Product')->find($id);
+            $entity = $em->getRepository('CustomerBundle:Customer')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Product entity.');
+                throw $this->createNotFoundException('Unable to find Customer entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('product'));
+        return $this->redirect($this->generateUrl('customer'));
     }
 
     /**
-     * Creates a form to delete a Product entity by id.
+     * Creates a form to delete a Customer entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -217,22 +215,10 @@ class ProductController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('product_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('customer_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
-
-    public function searchAction(Request $request)
-    {
-        $queryString = $request->get('q');
-
-        $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('ProductBundle:Product')->findByName($queryString);
-        $serializer = $this->container->get('serializer');
-        $products = $serializer->serialize($entities, 'json');
-        return new Response($products);
-    }
-
 }
