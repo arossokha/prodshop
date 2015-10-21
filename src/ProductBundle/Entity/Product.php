@@ -125,11 +125,11 @@ class Product
     /**
      * Add order
      *
-     * @param \ProductBundle\Entity\Order $order
+     * @param \CustomerBundle\Entity\Order $order
      *
      * @return Product
      */
-    public function addOrder(\ProductBundle\Entity\Order $order)
+    public function addOrder(\CustomerBundle\Entity\Order $order)
     {
         $this->orders[] = $order;
 
@@ -139,9 +139,9 @@ class Product
     /**
      * Remove order
      *
-     * @param \ProductBundle\Entity\Order $order
+     * @param \CustomerBundle\Entity\Order $order
      */
-    public function removeOrder(\ProductBundle\Entity\Order $order)
+    public function removeOrder(\CustomerBundle\Entity\Order $order)
     {
         $this->orders->removeElement($order);
     }
