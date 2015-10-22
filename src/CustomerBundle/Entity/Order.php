@@ -156,4 +156,3 @@ class Order
         return $this->customer;
     }
 }
-

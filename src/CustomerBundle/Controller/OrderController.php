@@ -39,25 +39,34 @@ class OrderController extends Controller
     {
         $entity = new Order();
         $form = $this->createCreateForm($entity);
-//        $entity->addOrderProduct(new OrderProduct());
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $orderProducts = clone $entity->getOrderProducts();
+            foreach($orderProducts as $orderPos => $orderProduct){
+                $entity->removeOrderProduct($orderProduct);
+                $orderProduct->setOrder($entity);
+//                @todo : validate correctly if product available
+                $product = $em->getRepository('ProductBundle:Product')->find($orderProduct->getProductId());
+                if(!$product){
+                    throw $this->createNotFoundException('Unable to find Product entity.');
+                }
+                $orderProduct->setProduct($product);
+                $entity->addOrderProduct($orderProduct);
+            }
             $em->persist($entity);
             $em->flush();
 
-            var_dump('Form saved');
-            die();
             return $this->redirect($this->generateUrl('order_show', array('id' => $entity->getId())));
         }
 
-        var_dump($form->isValid());
-        $errs = $form->getErrors();
-        foreach($errs as $err){
-            var_dump($err);
-        }
-        die();
+//        var_dump($form->isValid());
+//        $errs = $form->getErrors();
+//        foreach($errs as $err){
+//            var_dump($err);
+//        }
+//        die();
 
         return $this->render('CustomerBundle:Order:new.html.twig', array(
             'entity' => $entity,
@@ -184,7 +193,7 @@ class OrderController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('order_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('order_show', array('id' => $id)));
         }
 
         return $this->render('CustomerBundle:Order:edit.html.twig', array(

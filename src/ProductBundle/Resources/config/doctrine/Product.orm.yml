@@ -23,10 +23,3 @@ ProductBundle\Entity\Product:
                 targetEntity: CustomerBundle\Entity\OrderProduct
                 mappedBy: product
 
-#    manyToOne:
-#            orders:
-#              targetEntity: CustomerBundle\Entity\OrderProduct
-#              inversedBy: products
-#              joinColumn:
-#                name: product_id
-#                referencedColumnName: id

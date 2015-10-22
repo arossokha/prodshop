@@ -123,78 +123,6 @@ class Product
     }
 
     /**
-     * Add order
-     *
-     * @param \CustomerBundle\Entity\Order $order
-     *
-     * @return Product
-     */
-    public function addOrder(\CustomerBundle\Entity\Order $order)
-    {
-        $this->orders[] = $order;
-
-        return $this;
-    }
-
-    /**
-     * Remove order
-     *
-     * @param \CustomerBundle\Entity\Order $order
-     */
-    public function removeOrder(\CustomerBundle\Entity\Order $order)
-    {
-        $this->orders->removeElement($order);
-    }
-
-    /**
-     * Get orders
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getOrders()
-    {
-        return $this->orders;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $orderProducts;
-
-
-    /**
-     * Add orderProduct
-     *
-     * @param \ProductBundle\Entity\OrderProduct $orderProduct
-     *
-     * @return Product
-     */
-    public function addOrderProduct(\ProductBundle\Entity\OrderProduct $orderProduct)
-    {
-        $this->orderProducts[] = $orderProduct;
-
-        return $this;
-    }
-
-    /**
-     * Remove orderProduct
-     *
-     * @param \ProductBundle\Entity\OrderProduct $orderProduct
-     */
-    public function removeOrderProduct(\ProductBundle\Entity\OrderProduct $orderProduct)
-    {
-        $this->orderProducts->removeElement($orderProduct);
-    }
-
-    /**
-     * Get orderProducts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getOrderProducts()
-    {
-        return $this->orderProducts;
-    }
-    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     private $productOrders;
@@ -203,11 +131,11 @@ class Product
     /**
      * Add productOrder
      *
-     * @param \ProductBundle\Entity\OrderProduct $productOrder
+     * @param \CustomerBundle\Entity\OrderProduct $productOrder
      *
      * @return Product
      */
-    public function addProductOrder(\ProductBundle\Entity\OrderProduct $productOrder)
+    public function addProductOrder(\CustomerBundle\Entity\OrderProduct $productOrder)
     {
         $this->productOrders[] = $productOrder;
 
@@ -217,9 +145,9 @@ class Product
     /**
      * Remove productOrder
      *
-     * @param \ProductBundle\Entity\OrderProduct $productOrder
+     * @param \ProductBundle\Entity\CustomerBundle $productOrder
      */
-    public function removeProductOrder(\ProductBundle\Entity\OrderProduct $productOrder)
+    public function removeProductOrder(\CustomerBundle\Entity\OrderProduct $productOrder)
     {
         $this->productOrders->removeElement($productOrder);
     }

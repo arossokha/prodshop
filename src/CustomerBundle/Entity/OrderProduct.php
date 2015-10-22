@@ -168,4 +168,38 @@ class OrderProduct
         return $this->product;
     }
 
+    public function getProductName()
+    {
+        return $this->product->getName();
+    }
+
+    /**
+     * @var string
+     */
+    private $price;
+
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return OrderProduct
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 }

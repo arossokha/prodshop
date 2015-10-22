@@ -17,11 +17,15 @@ class OrderType extends AbstractType
         $builder
             ->add('sum')
             ->add('date')
-            ->add('customer')
-            ->add('orderProducts','collection',['type'=> new OrderProductType(),'allow_add' => true, 'label' => ''])
+            ->add('customer', 'entity', ['class' => 'CustomerBundle\Entity\Customer', 'required' => true, 'label' => 'For client', 'empty_value' => 'Choose client please...'])
+            ->add('orderProducts', 'collection', [
+                'type' => new OrderProductType(),
+                'allow_add' => true,
+                'by_reference' => false,
+                'attr' => ['class' => 'products']])
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

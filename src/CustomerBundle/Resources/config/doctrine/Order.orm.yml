@@ -9,6 +9,8 @@ CustomerBundle\Entity\Order:
     fields:
         sum:
             type: decimal
+            precision: 10
+            scale: 2
         date:
             type: datetime
     manyToOne:
@@ -22,3 +24,4 @@ CustomerBundle\Entity\Order:
         orderProducts:
             targetEntity: OrderProduct
             mappedBy: order
+            cascade : [persist] # @todo : read more details about this

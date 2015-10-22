@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends 'CustomerBundle::layout.html.twig' %}
 
 {% block body -%}
     <h1>Order</h1>
@@ -10,12 +10,36 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Sum</th>
-                <td>{{ entity.sum }}</td>
+                <th>Customer name</th>
+                <td>{{ entity.customer.firstname }}</td>
             </tr>
             <tr>
                 <th>Date</th>
                 <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <table class="orderProducts">
+                    <thead>
+                        <tr>
+                            <td> Name </td>
+                            <td> Quantity </td>
+                            <td> Price </td>
+                            <td> Line Sum </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for orderProduct in entity.orderProducts %}
+                        <td>{{ orderProduct.getProductName() }}</td>
+                        <td>{{ orderProduct.quantity }}</td>
+                        <td>{{ orderProduct.price }}</td>
+                        <td>{{ orderProduct.price * orderProduct.quantity }}</td>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </tr>
+            <tr>
+                <th>Order Sum</th>
+                <td>{{ entity.sum }}</td>
             </tr>
         </tbody>
     </table>

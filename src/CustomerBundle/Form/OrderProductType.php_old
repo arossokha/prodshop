@@ -15,12 +15,10 @@ class OrderProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-//            ->add('order_id','hidden')
-            ->add('product_id','hidden',['attr' => ['class' => 'productId']])
-            ->add('quantity',null,['attr' => ['class' => 'productQuantity']])
-            ->add('price','hidden',['attr' => ['class' => 'productPrice']])
-//            ->add('order') // don't may be this will need in for other forms
-//            ->add('product')
+            ->add('order_id')
+            ->add('product_id')
+            ->add('quantity')
+            ->add('price','hidden')
         ;
     }
     

@@ -16,10 +16,7 @@
 
     {{ form_row(form.date) }}
 
-    <select name="products" id="productsList"></select>
-
-    <ul class="products" data-index="0">
-    </ul>
+    {{ form_row(form.orderProducts) }}
 
     {{ form_row(form.sum,{'attr' : {'class' : 'orderSum'}}) }}
 

@@ -112,3 +112,18 @@ body
 #productsList{
     width: 400px;
 }
+
+table.record_properties td {
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+table.orderProducts td {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid black;
+}
+

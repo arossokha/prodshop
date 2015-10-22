@@ -12,6 +12,10 @@ CustomerBundle\Entity\OrderProduct:
             type: integer
         quantity:
             type: integer
+        price:
+            type: decimal
+            precision: 10
+            scale: 2
     manyToOne:
         order:
             targetEntity: Order
