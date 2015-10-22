@@ -224,15 +224,43 @@ class ProductController extends Controller
         ;
     }
 
+    /**
+     * Search product by name
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function searchAction(Request $request)
     {
         $queryString = $request->get('q');
 
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('ProductBundle:Product')->findByName($queryString);
-        $serializer = $this->container->get('serializer');
-        $products = $serializer->serialize($entities, 'json');
-        return new Response($products);
+        $productsData = array_map(function($item){
+            return [
+                'id' => $item->getId(),
+                'name' => $item->getName(),
+                'price' => $item->getPrice(),
+                'quantity' => $item->getQuantity(),
+            ];
+        },$entities);
+        return new JsonResponse($productsData);
+    }
+
+    /**
+     * Get available count
+     * @param Request $request
+     * @param $id
+     * @return JsonResponse
+     */
+    public function availableCountAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ProductBundle:Product')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+        $count = $entity->getQuantity();
+        return new JsonResponse($count);
     }
 
 }

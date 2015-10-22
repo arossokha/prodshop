@@ -100,7 +100,28 @@ jQuery(document).ready(function() {
     //    // add a new tag form (see next code block)
     //    addSubEntityForm($collectionHolder, $newLinkLi);
     //});
-    $('div.products ul').on('change','.productQuantity',recalculateSum);
+    $('div.products ul').on('change','.productQuantity',function(e) {
+        e.preventDefault();
+        var element = e.target;
+        var productId = $(element).parent().parent().find('.productId').val();
+        var url = ajaxProductCountUrl.replace('__id__',productId);
+        var currentQuantity = element.value;
+        $.ajax({
+            type: 'get',
+            //url: '/app_dev.php/product/count/' + productId,
+            url: url,
+        })
+        .done(function (count) {
+                if(count < currentQuantity){
+                    $(element).val(count);
+                }
+                recalculateSum();
+            })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        });
+
+    });
 });
 
 function addSubEntityForm($collectionHolder, $newLinkLi) {

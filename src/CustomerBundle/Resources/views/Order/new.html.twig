@@ -1,6 +1,10 @@
 {% extends 'CustomerBundle::layout.html.twig' %}
 
 {% block javascripts %}
+    <script>
+        var ajaxProductCountUrl = "{{ path('product_count',{ 'id': '__id__'}) }}";
+        var ajaxProductSearchUrl = "{{ path('product_search') }}";
+    </script>
     {{ parent() }}
     <script src="{{ asset('bundles/customer/js/order.form.js') }}"></script>
 {% endblock %}
